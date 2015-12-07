@@ -15,6 +15,32 @@ Make sure you have internet access on the device so it can download the required
 
 See examples of usage in the examples folder.
 
+#### Install munin plugins
+
+To use the munin plugins do the following:
+
+Copy the files from the munin folder to */usr/share/munin/plugins* (Ubuntu 14.04)
+
+Create symlinks:
+
+`sudo ln -s /usr/share/munin/plugins/i2c_pressure /etc/munin/plugins/`
+
+`sudo ln -s /usr/share/munin/plugins/i2c_temperature /etc/munin/plugins/`
+
+The munin-node needs root access for the IO pins, add the following at the bottom of this file: 
+
+*etc/munin/plugin-conf.d/munin-node*
+
+```
+[i2c_pressure]
+user root
+
+[i2c_temperature]
+user root
+```
+
+Restart munin-node
+
 Adafruit invests time and resources providing this open source code, please support Adafruit and open-source hardware by purchasing products from Adafruit!
 
 Written by Tony DiCola for Adafruit Industries.
